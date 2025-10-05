@@ -78,9 +78,9 @@ if st.session_state.selected_sgg:
 # 원본 코드 시작 (최소 수정)
 map = folium.Map(
     location=[36.84601435658271, 128.06870778562285],
-    zoom_start=7.5,
-    width='800px',
-    height='1200px'
+    zoom_start=8,
+    width='700px',
+    height='700px'
 )
 
 choropleth = folium.Choropleth(
@@ -108,7 +108,7 @@ except Exception:
     pass
 
 # --- 스트림릿에서 지도 출력 ---
-st_folium(map, width=800, height=800)
+st_folium(map, width=700, height=700)
 
 # --- 요약 표시 (선택사항: 현재 방문여부 집계) ---
 visited_cnt = int((visit["방문여부"] == 1).sum()) if "방문여부" in visit.columns else 0
