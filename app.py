@@ -83,18 +83,30 @@ map = folium.Map(
     height='800px'
 )
 
+# (1) Choropleth: 유효한 ColorBrewer 팔레트 사용
 choropleth = folium.Choropleth(
     geo_data=korea,
     data=visit,
     columns=('code', '방문여부'),
     key_on="feature.properties.SIG_CD",
-    fill_color="Yellows",
-    line_color="black",     # 얇은 검정색 경계선
+    fill_color="Greys",   # ← 유효한 팔레트 (예: 'Blues', 'YlOrRd', 'Greens' 등)
+    line_color="black",
     line_weight=0.5,
     fill_opacity=0.7,
-    nan_fill_color="white"  # 방문여부 데이터가 없는 영역은 흰색 배경
+    nan_fill_color="white"
 ).add_to(map)
-# 원본 코드 끝
+
+# (2) 방문지역만 노란색으로 덮어쓰기
+visited_codes = set(visit.loc[visit["방문여부"]==1, "code"].astype(str))
+folium.GeoJson(
+    korea,
+    style_function=lambda f: {
+        "fillColor": "yellow" if f["properties"]["SIG_CD"] in visited_codes else "transparent",
+        "color": "black",
+        "weight": 0.5,
+        "fillOpacity": 0.9 if f["properties"]["SIG_CD"] in visited_codes else 0
+    }
+).add_to(map)
 
 # 보기 편하도록 툴팁(시군구명, 방문여부)만 살짝 추가(지도의 데이터 자체는 변경 없음)
 try:
