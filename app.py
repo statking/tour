@@ -88,7 +88,7 @@ choropleth = folium.Choropleth(
     data=visit,
     columns=('code', '방문여부'),
     key_on="feature.properties.SIG_CD",
-    fill_color="Blues",
+    fill_color="Yellows",
     line_color="black",     # 얇은 검정색 경계선
     line_weight=0.5,
     fill_opacity=0.7,
@@ -105,7 +105,11 @@ try:
             fields=["SIG_KOR_NM", "SIG_CD"],
             aliases=["시군구명", "코드"],
             labels=True,
-            sticky=False
+            sticky=False,
+            line_color="black",     # 얇은 검정색 경계선
+            line_weight=0.5,
+            fill_opacity=0.7,
+            nan_fill_color="white"
         )
     ).add_to(map)
 except Exception:
