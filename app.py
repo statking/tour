@@ -78,7 +78,7 @@ if st.session_state.selected_sgg:
 # 원본 코드 시작 (최소 수정)
 map = folium.Map(
     location=[36.84601435658271, 128.06870778562285],
-    zoom_start=8,
+    zoom_start=6,
     width='700px',
     height='700px'
 )
