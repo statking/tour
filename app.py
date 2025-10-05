@@ -97,23 +97,7 @@ choropleth = folium.Choropleth(
 # 원본 코드 끝
 
 # 보기 편하도록 툴팁(시군구명, 방문여부)만 살짝 추가(지도의 데이터 자체는 변경 없음)
-try:
-    folium.GeoJson(
-        korea,
-        name="tooltip",
-        tooltip=folium.GeoJsonTooltip(
-            fields=["SIG_KOR_NM", "SIG_CD"],
-            aliases=["시군구명", "코드"],
-            labels=True,
-            sticky=False,
-            line_color="black",     # 얇은 검정색 경계선
-            line_weight=0.5,
-            fill_opacity=0.7,
-            nan_fill_color="white"
-        )
-    ).add_to(map)
-except Exception:
-    pass
+
 
 # --- 스트림릿에서 지도 출력 ---
 st_folium(map, width=None, height=800)   # ← width=None으로 화면 너비에 맞게 자동 확장
