@@ -89,6 +89,10 @@ choropleth = folium.Choropleth(
     columns=('code', '방문여부'),
     key_on="feature.properties.SIG_CD",
     fill_color="Blues",
+    line_color="black",     # 얇은 검정색 경계선
+    line_weight=0.5,
+    fill_opacity=0.7,
+    nan_fill_color="white"  # 방문여부 데이터가 없는 영역은 흰색 배경
 ).add_to(map)
 # 원본 코드 끝
 
