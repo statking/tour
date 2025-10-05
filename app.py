@@ -9,8 +9,8 @@ from streamlit_folium import st_folium
 st.set_page_config(page_title="전국 랜덤여행", layout="wide")
 
 # --- 파일 경로 (업로드한 파일 사용) ---
-GEO_PATH = "/mnt/data/sgg_simple.geojson"
-XLSX_PATH = "/mnt/data/sigcd_mapping.xlsx"
+GEO_PATH = "/mnt/sgg_simple.geojson"
+XLSX_PATH = "/mnt/sigcd_mapping.xlsx"
 
 # --- 상태값 초기화 ---
 if "selected_sgg" not in st.session_state:
